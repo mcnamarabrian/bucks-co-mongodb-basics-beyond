@@ -37,16 +37,39 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "m3" do |m3|
-    m3.vm.box = "precise64"
-    m3.vm.box_url = "http://files.vagrantup.com/precise64.box"
-    m3.vm.network :forwarded_port, guest: 27017, host: 5000
-    m3.vm.network :forwarded_port, guest: 28017, host: 5100
-    m3.vm.network :private_network, ip: '192.168.1.300'
-    m3.vm.hostname = "m3"
-    m3.vm.provider :virtualbox do |v|
-      v.customize ['modifyvm', :id, '--name', 'm3']
+  config.vm.define "r2" do |r2|
+    r2.vm.box = "precise64"
+    r2.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    r2.vm.network :forwarded_port, guest: 27017, host: 5000
+    r2.vm.network :forwarded_port, guest: 28017, host: 5100
+    r2.vm.network :private_network, ip: '192.168.1.210'
+    r2.vm.hostname = "r2"
+    r2.vm.provider :virtualbox do |v|
+      v.customize ['modifyvm', :id, '--name', 'r2']
     end
-    m3.vm.provision :shell, :inline => MONGO_INSTALL
+    
+    r2.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = ["cookbooks"]
+      chef.add_recipe "mongodb::default"
+      chef.add_recipe "mongodb::replicaset"
+    end
+  end
+
+  config.vm.define "r3" do |r3|
+    r3.vm.box = "precise64"
+    r3.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    r3.vm.network :forwarded_port, guest: 27017, host: 6000
+    r3.vm.network :forwarded_port, guest: 28017, host: 6100
+    r3.vm.network :private_network, ip: '192.168.1.220'
+    r3.vm.hostname = "r1"
+    r3.vm.provider :virtualbox do |v|
+      v.customize ['modifyvm', :id, '--name', 'r3']
+    end
+    
+    r3.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = ["cookbooks"]
+      chef.add_recipe "mongodb::default"
+      chef.add_recipe "mongodb::replicaset"
+    end
   end
 end
