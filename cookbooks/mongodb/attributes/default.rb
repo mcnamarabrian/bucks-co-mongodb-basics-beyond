@@ -57,7 +57,7 @@ default[:mongodb][:default_init_name] = "mongodb"
 default[:mongodb][:instance_name] = "mongodb"
 
 # this option can be "distro" or "10gen"
-default[:mongodb][:install_method] = "distro"
+default[:mongodb][:install_method] = "10gen"
 
 case node['platform_family']
 when "freebsd"
@@ -106,7 +106,7 @@ default[:mongodb][:bind_ip] = nil
 default[:mongodb][:logpath] = "/var/log/mongodb"
 default[:mongodb][:dbpath] = "/var/lib/mongodb"
 default[:mongodb][:nojournal] = false
-default[:mongodb][:enable_rest] = false # rest
+default[:mongodb][:enable_rest] = true # rest
 default[:mongodb][:smallfiles] = false
 default[:mongodb][:oplog_size] = nil # opslogSize
 default[:mongodb][:replicaset_name] = nil #replSet

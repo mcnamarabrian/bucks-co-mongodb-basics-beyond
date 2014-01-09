@@ -14,7 +14,7 @@ else
 end
 default['mongodb']['config']['dbpath'] = node['mongodb']['dbpath'] || "/var/lib/mongodb"
 default['mongodb']['config']['nojournal'] = node['mongodb']['nojournal'] || false
-default['mongodb']['config']['rest'] = node['mongodb']['enable_rest'] || false
+default['mongodb']['config']['rest'] = node['mongodb']['enable_rest'] || true
 default['mongodb']['config']['smallfiles'] = node['mongodb']['smallfiles'] || false
 default['mongodb']['config']['oplogSize'] = node['mongodb']['oplog_size'] || nil
 

@@ -1,9 +1,5 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-chef_server_key = ".chef/chef-validator.pem"
-chef_server = "https://chef.local.vm"
-chef_environment = "vagrant"
-
 Vagrant.configure("2") do |config|
   config.vm.define "m1" do |m1|
     m1.vm.box = "precise64"
