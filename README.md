@@ -4,7 +4,7 @@ This repository contains files referenced during the January 2014 Bucks County D
 
 ## Vagrant
 
-I have used [Vagrant](http://www.vagrantup.com/) to create virtual standalone instances as well as a 3-member replica set.
+I have used [Vagrant](http://www.vagrantup.com/) to create 3 virtual standalone instances.
 
 ## Scripts
 
