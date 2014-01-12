@@ -35,9 +35,11 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
   port = params[:port]
 
   logpath = params[:logpath]
+  logfile = "#{logpath}/#{name}.log"
 
   dbpath = params[:dbpath]
 
+  configfile = node['mongodb']['configfile']
   configserver_nodes = params[:configserver]
 
   replicaset = params[:replicaset]
@@ -73,33 +75,38 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
   end
 
   if type != "mongos"
-    provider = "mongod"
+    daemon = "/usr/bin/mongod"
     configserver = nil
   else
-    provider = "mongos"
+    daemon = "/usr/bin/mongos"
     dbpath = nil
     configserver = configserver_nodes.collect{|n| "#{(n['mongodb']['configserver_url'] || n['fqdn'])}:#{n['mongodb']['port']}" }.sort.join(",")
   end
 
   # default file
-  template node['mongodb']['sysconfig_file'] do
+  template "#{node['mongodb']['defaults_dir']}/#{name}" do
+    action :create
     cookbook node['mongodb']['template_cookbook']
-    source node['mongodb']['sysconfig_file_template']
+    source "mongodb.default.erb"
     group node['mongodb']['root_group']
     owner "root"
     mode "0644"
-    action :create
-    notifies :restart, "service[#{name}]"
-  end
-
-  # config file
-  template node['mongodb']['dbconfig_file'] do
-    cookbook node['mongodb']['template_cookbook']
-    source node['mongodb']['dbconfig_file_template']
-    group node['mongodb']['root_group']
-    owner "root"
-    mode "0644"
-    action :create
+    variables(
+      "daemon_path" => daemon,
+      "name" => name,
+      "config" => configfile,
+      "configdb" => configserver,
+      "bind_ip" => bind_ip,
+      "port" => port,
+      "logpath" => logfile,
+      "dbpath" => dbpath,
+      "replicaset_name" => replicaset_name,
+      "configsrv" => false, #type == "configserver", this might change the port
+      "shardsrv" => false,  #type == "shard", dito.
+      "nojournal" => nojournal,
+      "enable_rest" => params[:enable_rest] && type != "mongos",
+      "smallfiles" => params[:smallfiles]
+    )
     notifies :restart, "service[#{name}]"
   end
 
@@ -124,21 +131,15 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
   end
 
   # init script
-  if node['mongodb']['apt_repo'] == "ubuntu-upstart" then
-      init_file = File.join(node['mongodb']['init_dir'], "#{name}.conf")
-  else
-      init_file = File.join(node['mongodb']['init_dir'], "#{name}")
-  end
-  template init_file do
+  template "#{node['mongodb']['init_dir']}/#{name}" do
+    action :create
     cookbook node['mongodb']['template_cookbook']
     source node[:mongodb][:init_script_template]
     group node['mongodb']['root_group']
     owner "root"
     mode "0755"
-    variables({
-        :provides => provider
-    })
-    action :create
+    variables :provides => name, :emits_pid => type != "mongos"
+    notifies :restart, "service[#{name}]"
   end
 
   # service
@@ -162,13 +163,11 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
 
   # replicaset
   if !replicaset_name.nil? && node['mongodb']['auto_configure']['replicaset']
-    rs_nodes = search(
-      :node,
-      "mongodb_cluster_name:#{replicaset['mongodb']['cluster_name']} AND \
-       recipes:mongodb\\:\\:replicaset AND \
-       mongodb_shard_name:#{replicaset['mongodb']['shard_name']} AND \
-       chef_environment:#{replicaset.chef_environment}"
-    )
+    rs_nodes = [
+      {"Node Name" => "r1"}, 
+      {"Node Name" => "r2"},
+      {"Node Name" => "r3"}
+    ]
 
     ruby_block "config_replicaset" do
       block do

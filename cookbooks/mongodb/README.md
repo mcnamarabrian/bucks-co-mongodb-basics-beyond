@@ -22,10 +22,10 @@ This cookbook depends on these external cookbooks
 
 ## Platform:
 
-The cookbook aims to be platform independent, but is best tested on debian squeeze systems.
+The cookbook aims to be platform independant, but is best tested on debian squeeze systems.
 
 The `10gen_repo` recipe configures the package manager to use 10gen's
-official package repositories on Debian, Ubuntu, Redhat, CentOS, Fedora, and
+official package reposotories on Debian, Ubuntu, Redhat, CentOS, Fedora, and
 Amazon linux distributions.
 
 # DEFINITIONS:
@@ -41,10 +41,7 @@ For examples see the USAGE section below.
 * `mongodb[:dbpath]` - Location for mongodb data directory, defaults to "/var/lib/mongodb"
 * `mongodb[:logpath]` - Path for the logfiles, default is "/var/log/mongodb"
 * `mongodb[:port]` - Port the mongod listens on, default is 27017
-* `mongodb[:enable_rest]` - Enable the ReST interface of the webserver
-* `mongodb[:smallfiles]` - Modify MongoDB to use a smaller default data file size
-* `mongodb[:oplog_size]` - Specifies a maximum size in megabytes for the replication operation log
-* `mongodb[:client_role]` - Role identifying all external clients which should have access to a mongod instance
+* `mongodb[:client_role]` - Role identifing all external clients which should have access to a mongod instance
 * `mongodb[:cluster_name]` - Name of the cluster, all members of the cluster must
     reference to the same name, as this name is used internally to identify all
     members of a cluster.
@@ -59,13 +56,11 @@ For examples see the USAGE section below.
 * `mongodb[:replica_tags]` - Node [tags](http://docs.mongodb.org/manual/reference/replica-configuration/#local.system.replset.members[n].tags).
 * `mongodb[:replica_votes]` - Number of [votes](http://docs.mongodb.org/manual/reference/replica-configuration/#local.system.replset.members[n].votes) node will cast in an election.
 * `mongodb[:package_version]` - Version of the MongoDB package to install, default is nil
+* `mongodb[:replicaset_name]` - Define name of replicatset
 * `mongodb[:mms_agent][:api_key]` - MMS Agent API Key
 * `mongodb[:mms_agent][:secret_key]` - MMS Agent API Key
 * `mongodb[:mms_agent][:install_dir]` - Location to install the agent
 * `mongodb[:mms_agent][:log_dir]` - Location to write the agent logfile. If this is a relative path, it's relative to where the service is run (via runit), e.g. set to './main'
-* `mongodb[:mms_agent][:install_munin]` - If enabled, installs the munin daemon.
-* `mongodb[:mms_agent][:munin_package]` - The name of the munin package to install (if enabled). The default is debian's package name 'munin-node'.
-* `mongodb[:mms_agent][:enable_munin]` - Enable MMS Agent integration with munin.
 
 # USAGE:
 

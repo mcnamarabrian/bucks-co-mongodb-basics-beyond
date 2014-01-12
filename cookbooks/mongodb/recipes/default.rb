@@ -19,18 +19,23 @@
 # limitations under the License.
 #
 
-include_recipe "mongodb::install"
+package node[:mongodb][:package_name] do
+  action :install
+  version node[:mongodb][:package_version]
+end
+
 
 # Create keyFile if specified
-if node[:mongodb][:key_file_content] then
-  file node[:mongodb][:config][:keyFile] do
+if node[:mongodb][:key_file]
+  file "/etc/mongodb.key" do
     owner node[:mongodb][:user]
     group node[:mongodb][:group]
     mode  "0600"
     backup false
-    content node[:mongodb][:key_file_content]
+    content node[:mongodb][:key_file]
   end
 end
+
 
 # configure default instance
 replicaset_recipe = 'mongodb::replicaset'
