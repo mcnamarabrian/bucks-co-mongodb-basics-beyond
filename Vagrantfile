@@ -86,8 +86,6 @@ Vagrant.configure("2") do |config|
     m1.vm.network :forwarded_port, guest: 28017, host: 3100
     m1.vm.network :private_network, ip: '192.168.1.100'
 
-    m1.cache.auto_detect = true
-
     m1.vm.hostname = "m1"
     m1.vm.provider :virtualbox do |v|
       v.customize ['modifyvm', :id, '--name', 'm1']
@@ -103,8 +101,6 @@ Vagrant.configure("2") do |config|
     r1.vm.network :forwarded_port, guest: 27017, host: 4000
     r1.vm.network :forwarded_port, guest: 28017, host: 4100
     r1.vm.network :private_network, ip: '192.168.1.200'
-
-    r1.cache.auto_detect = true
 
     r1.vm.hostname = "r1"
     r1.vm.provider :virtualbox do |v|

@@ -11,7 +11,15 @@ I have used [Vagrant](http://www.vagrantup.com/) to define several VMs.
 * r2 => Replica set member (node 2)
 * r3 => Replica set member (node 3)
 
-I have also used the [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier) Vagrant plugin to cache packages/gems.
+In order to bring up a stand-along mongo server, please do the following:
+
+1.  Bring up the standalong MongoDB instance:
+```
+vagrant up m1
+```
+2.  There is no step 2
+
+
 
 In order to bring up a bare-metal replica set, please do the following:
 
