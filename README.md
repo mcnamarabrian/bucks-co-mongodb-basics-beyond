@@ -13,11 +13,18 @@ I have used [Vagrant](http://www.vagrantup.com/) to define several VMs.
 
 In order to bring up a stand-along mongo server, please do the following:
 
-1.  Bring up the standalong MongoDB instance:
+1. Bring up the standalone MongoDB instance:
 ```
 vagrant up m1
 ```
-2.  There is no step 2
+2. Connect to the VM:
+```
+vagrant ssh m1
+```
+3. Open the Javascript Mongo shell:
+```
+/home/vagrant/mongodb/bin/mongo
+```
 
 
 
@@ -27,13 +34,13 @@ In order to bring up a bare-metal replica set, please do the following:
 ```
 vagrant up r1 && vagrant up r2 && vagrant up r3
 ```
-2. Configure the replicaset from r1:
-```
-/home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js
-```
-3. Connect to any of the Vagrant VMs:
+2. Connect to VM r1:
 ```
 vagrant ssh r1
+```
+3. Configure the replicaset from r1:
+```
+/home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js
 ```
 4. Open the mongo Javascript Mongo shell:
 ```
