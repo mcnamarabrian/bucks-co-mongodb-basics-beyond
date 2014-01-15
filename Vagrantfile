@@ -30,7 +30,7 @@ echo "Installing pymongo via pip..."
 apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
 pip install pymongo > /dev/null 2>&1
 echo "Creating symlink to mongo client and mongoimport to save on typing..."
-ln -s /home/vagrant/mongodb/bin/mongo /usr/local/mongo
+ln -s /home/vagrant/mongodb/bin/mongo /usr/local/bin/mongo
 ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
 EOI
 
@@ -74,7 +74,7 @@ echo "Installing pymongo via pip..."
 apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
 pip install pymongo > /dev/null 2>&1
 echo "Creating symlink to mongo client and mongoimport to save on typing..."
-ln -s /home/vagrant/mongodb/bin/mongo /usr/local/mongo
+ln -s /home/vagrant/mongodb/bin/mongo /usr/local/bin/mongo
 ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
 EOI
 
@@ -96,7 +96,7 @@ echo "Installing pymongo via pip..."
 apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
 pip install pymongo > /dev/null 2>&1
 echo "Creating symlink to mongo client and mongoimport to save on typing..."
-ln -s /home/vagrant/mongodb/bin/mongo /usr/local/mongo
+ln -s /home/vagrant/mongodb/bin/mongo /usr/local/bin/mongo
 ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
 EOI
 
