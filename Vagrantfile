@@ -15,6 +15,7 @@ EOI
 INSTALL_STANDALONE_MONGO = <<-EOI
 echo "Copying mongodb-linux-x86_64-2.4.9.tgz to /home/vagrant"
 cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant || {
+  echo "No local copy - downloading from http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz..."
   cd /home/vagrant
   wget -q http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
   cp /home/vagrant/mongodb-linux-x86_64-2.4.9.tgz /vagrant
@@ -28,11 +29,15 @@ echo "Starting mongodb..."
 echo "Installing pymongo via pip..."
 apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
 pip install pymongo > /dev/null 2>&1
+echo "Creating symlink to mongo client and mongoimport to save on typing..."
+ln -s /home/vagrant/mongodb/bin/mongo /usr/local/mongo
+ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
 EOI
 
 INSTALL_FIRST_REPLICA_MONGO = <<-EOI
 echo "Copying mongodb-linux-x86_64-2.4.9.tgz to /home/vagrant"
 cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant || {
+  echo "No local copy - downloading from http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz..."
   cd /home/vagrant
   wget -q http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
   cp /home/vagrant/mongodb-linux-x86_64-2.4.9.tgz /vagrant
@@ -68,11 +73,15 @@ FIN
 echo "Installing pymongo via pip..."
 apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
 pip install pymongo > /dev/null 2>&1
+echo "Creating symlink to mongo client and mongoimport to save on typing..."
+ln -s /home/vagrant/mongodb/bin/mongo /usr/local/mongo
+ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
 EOI
 
 INSTALL_NEXT_REPLICA_MONGO = <<-EOI
 echo "Copying mongodb-linux-x86_64-2.4.9.tgz to /home/vagrant"
 cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant || {
+  echo "No local copy - downloading from http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz..."
   cd /home/vagrant
   wget -q http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
   cp /home/vagrant/mongodb-linux-x86_64-2.4.9.tgz /vagrant
@@ -86,6 +95,9 @@ echo "Starting mongodb..."
 echo "Installing pymongo via pip..."
 apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
 pip install pymongo > /dev/null 2>&1
+echo "Creating symlink to mongo client and mongoimport to save on typing..."
+ln -s /home/vagrant/mongodb/bin/mongo /usr/local/mongo
+ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
 EOI
 
 Vagrant.configure("2") do |config|

@@ -23,7 +23,7 @@ vagrant ssh m1
 ```
 3. Open the Javascript Mongo shell:
 ```
-/home/vagrant/mongodb/bin/mongo
+mongo
 ```
 
 
@@ -40,11 +40,11 @@ vagrant ssh r1
 ```
 3. Configure the replicaset from r1:
 ```
-/home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js
+mongo < /home/vagrant/add_members.js
 ```
 4. Open the mongo Javascript Mongo shell:
 ```
-/home/vagrant/mongodb/bin/mongo
+mongo
 ```
 5. Verify the status of the replicaset:
 ```
@@ -63,5 +63,5 @@ vagrant ssh m1
 ```
 2. Import the sample dataset:
 ```
-/home/vagrant/mongodb/bin/mongoimport -c attendees -d bcdo_mongo /vagrant/scripts/attendees.json
+mongoimport -c attendees -d bcdo /vagrant/scripts/attendees.json --jsonArray
 ```
