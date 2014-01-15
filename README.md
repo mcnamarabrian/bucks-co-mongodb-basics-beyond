@@ -56,6 +56,8 @@ rs.config()
 ```
 
 # Working with Sample Data
+The examples in the Meetup will focus on working with a standard set of data.  
+
 ## Data Import
 1. Once the replicaset is up and running, connect to the r1 Vagrant VM:
 ```
