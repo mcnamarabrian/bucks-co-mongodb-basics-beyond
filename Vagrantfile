@@ -14,7 +14,11 @@ EOI
 
 INSTALL_STANDALONE_MONGO = <<-EOI
 echo "Copying mongodb-linux-x86_64-2.4.9.tgz to /home/vagrant"
-cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant
+cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant || {
+  cd /home/vagrant
+  wget -q http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+  cp /home/vagrant/mongodb-linux-x86_64-2.4.9.tgz /vagrant
+}
 echo "Extracting mongodb-2.4.9..." && tar xvzf mongodb-linux-x86_64-2.4.9.tgz -C /home/vagrant
 echo "Creating link /home/vagrant/mongodb..." && ln -s /home/vagrant/mongodb-linux-x86_64-2.4.9 /home/vagrant/mongodb
 mkdir -p /home/vagrant/mongodb/{log,data} && mkdir /home/vagrant/mongodb/data/db
@@ -25,7 +29,12 @@ EOI
 
 INSTALL_FIRST_REPLICA_MONGO = <<-EOI
 echo "Copying mongodb-linux-x86_64-2.4.9.tgz to /home/vagrant"
-cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant
+cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant || {
+  cd /home/vagrant
+  wget -q http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+  cp /home/vagrant/mongodb-linux-x86_64-2.4.9.tgz /vagrant
+}
+
 echo "Extracting mongodb-2.4.9..." && tar xvzf mongodb-linux-x86_64-2.4.9.tgz -C /home/vagrant
 echo "Creating link /home/vagrant/mongodb..." && ln -s /home/vagrant/mongodb-linux-x86_64-2.4.9 /home/vagrant/mongodb
 mkdir -p /home/vagrant/mongodb/{log,data} && mkdir /home/vagrant/mongodb/data/db
@@ -56,7 +65,11 @@ EOI
 
 INSTALL_NEXT_REPLICA_MONGO = <<-EOI
 echo "Copying mongodb-linux-x86_64-2.4.9.tgz to /home/vagrant"
-cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant
+cp /vagrant/mongodb-linux-x86_64-2.4.9.tgz /home/vagrant || {
+  cd /home/vagrant
+  wget -q http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+  cp /home/vagrant/mongodb-linux-x86_64-2.4.9.tgz /vagrant
+}
 echo "Extracting mongodb-2.4.9..." && tar xvzf mongodb-linux-x86_64-2.4.9.tgz -C /home/vagrant
 echo "Creating link /home/vagrant/mongodb..." && ln -s /home/vagrant/mongodb-linux-x86_64-2.4.9 /home/vagrant/mongodb
 mkdir -p /home/vagrant/mongodb/{log,data} && mkdir /home/vagrant/mongodb/data/db

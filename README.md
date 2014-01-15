@@ -15,17 +15,42 @@ I have also used the [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier
 
 In order to bring up a bare-metal replica set, please do the following:
 
-# Bring up the replicaset Vagrant VMs (vagrant up r1 && vagrant up r2 && vagrant up r3)
+1. Bring up the replicaset Vagrant VMs:
 
-# Once r2 and r3 are booted, configure the replicaset from r1 (/home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js)
+```
 
-# Connect to any of the Vagrant VMs (vagrant ssh r1)
+vagrant up r1 && vagrant up r2 && vagrant up r3
 
-# Open the mongo Javascript shell (/home/vagrant/mongodb/bin/mongo)
+```
 
-# Verify the status of the replicaset (rs.status())
+2. Configure the replicaset from r1:
 
-## Scripts
+```
 
-I have created some Python scripts that use the PyMongo driver to interact with the Mongo replica set.
+/home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js)
 
+```
+
+3. Connect to any of the Vagrant VMs:
+
+```
+
+vagrant ssh r1
+
+```
+
+4. Open the mongo Javascript Mongo shell:
+
+```
+
+/home/vagrant/mongodb/bin/mongo)
+
+```
+
+5. Verify the status of the replicaset:
+
+```
+
+rs.status())
+
+```
