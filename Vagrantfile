@@ -25,9 +25,9 @@ mkdir -p /home/vagrant/mongodb/{log,data} && mkdir /home/vagrant/mongodb/data/db
 chown -R vagrant:vagrant /home/vagrant/mongodb
 echo "Starting mongodb..."
 /home/vagrant/mongodb/bin/mongod --fork --logpath /home/vagrant/mongodb/log/mongo.log --logappend --dbpath /home/vagrant/mongodb/data/db --rest
-echo "Installing pymongo..."
-apt-get update && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
-pip install pymongo
+echo "Installing pymongo via pip..."
+apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
+pip install pymongo > /dev/null 2>&1
 EOI
 
 INSTALL_FIRST_REPLICA_MONGO = <<-EOI
@@ -65,9 +65,9 @@ FIN
 
 /home/vagrant/mongodb/bin/mongo < /home/vagrant/create_replica.js
 
-echo "Installing pymongo..."
-apt-get update && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
-pip install pymongo
+echo "Installing pymongo via pip..."
+apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
+pip install pymongo > /dev/null 2>&1
 EOI
 
 INSTALL_NEXT_REPLICA_MONGO = <<-EOI
@@ -83,9 +83,9 @@ mkdir -p /home/vagrant/mongodb/{log,data} && mkdir /home/vagrant/mongodb/data/db
 chown -R vagrant:vagrant /home/vagrant/mongodb
 echo "Starting mongodb..."
 /home/vagrant/mongodb/bin/mongod --fork --logpath /home/vagrant/mongodb/log/mongo.log --logappend --dbpath /home/vagrant/mongodb/data/db --replSet bcdo --rest
-echo "Installing pymongo..."
-apt-get update && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
-pip install pymongo
+echo "Installing pymongo via pip..."
+apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev python-pip -y > /dev/null 2>&1
+pip install pymongo > /dev/null 2>&1
 EOI
 
 Vagrant.configure("2") do |config|
