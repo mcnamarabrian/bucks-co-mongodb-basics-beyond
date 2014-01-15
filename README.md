@@ -54,3 +54,14 @@ rs.status()
 ```
 rs.config()
 ```
+
+# Working with Sample Data
+## Data Import
+1. Once the replicaset is up and running, connect to the r1 Vagrant VM:
+```
+vagrant ssh m1
+```
+2. Import the sample dataset:
+```
+/home/vagrant/mongodb/bin/mongoimport -c attendees -d bcdo_mongo /vagrant/scripts/attendees.json
+```

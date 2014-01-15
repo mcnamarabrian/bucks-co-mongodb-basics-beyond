@@ -1,0 +1,5 @@
+{"name": {"first":"Brian", "last":"McNamara"}, "likes": ["meetups", "basketball", "movies", "stupid quotes"]},
+{"name": {"first":"Dave", "last":"Konopka"}, "likes": ["rain", "devops", "you", "meetups"]},
+{"name": {"first":"Ben", "last":"Krein"},"likes": ["boats", "topgear", "hiking", "meetups"]},
+{"name": {"first":"Chris", "last":"Heerschap"}, "likes": ["bikes", "eating", "meetups"], "dislikes": ["waiting for food"]},
+{"name": {"first":"Peter", "last":"Shannon"}, "likes": ["rock climbing", "not sleeping", "python", "go", "meetups"]}
