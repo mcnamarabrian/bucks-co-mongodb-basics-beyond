@@ -16,47 +16,27 @@ I have also used the [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier
 In order to bring up a bare-metal replica set, please do the following:
 
 1. Bring up the replicaset Vagrant VMs:
-
 ```
-
 vagrant up r1 && vagrant up r2 && vagrant up r3
-
 ```
-
 2. Configure the replicaset from r1:
-
 ```
-
 vagrant ssh r1
-
 /home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js
-
 ```
 3. Connect to any of the Vagrant VMs:
-
 ```
-
 vagrant ssh r1
-
 ```
 4. Open the mongo Javascript Mongo shell:
-
 ```
-
 /home/vagrant/mongodb/bin/mongo
-
 ```
 5. Verify the status of the replicaset:
-
 ```
-
 rs.status()
-
 ```
 6.  Verify the configuration of the replicaset includes tags:
-
 ```
-
 rs.config()
-
 ```
