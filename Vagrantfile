@@ -31,7 +31,7 @@ apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev py
 pip install pymongo > /dev/null 2>&1
 echo "Creating symlink to mongo client and mongoimport to save on typing..."
 ln -s /home/vagrant/mongodb/bin/mongo /usr/local/bin/mongo
-ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
+ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/bin/mongoimport
 EOI
 
 INSTALL_FIRST_REPLICA_MONGO = <<-EOI
@@ -75,7 +75,7 @@ apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev py
 pip install pymongo > /dev/null 2>&1
 echo "Creating symlink to mongo client and mongoimport to save on typing..."
 ln -s /home/vagrant/mongodb/bin/mongo /usr/local/bin/mongo
-ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
+ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/bin/mongoimport
 EOI
 
 INSTALL_NEXT_REPLICA_MONGO = <<-EOI
@@ -97,7 +97,7 @@ apt-get update > /dev/null 2>&1 && apt-get install build-essential python-dev py
 pip install pymongo > /dev/null 2>&1
 echo "Creating symlink to mongo client and mongoimport to save on typing..."
 ln -s /home/vagrant/mongodb/bin/mongo /usr/local/bin/mongo
-ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/mongoimport
+ln -s /home/vagrant/mongodb/bin/mongoimport /usr/local/bin/mongoimport
 EOI
 
 Vagrant.configure("2") do |config|
