@@ -1,6 +1,6 @@
 # Overview
 
-This repository contains files referenced during the January 2014 Bucks County DevOps Meetup [MongoDB - The Basics and Slightly Beyond](http://www.meetup.com/Bucks-County-DevOps/events/153800082/).
+This repository contains files referenced during the January 2014 Bucks County DevOps Meetup [MongoDB - The Basics and Slightly Beyond](http://www.meetup.com/Bucks-County-DevOps/events/153800082/).  The presentation for the Meetup can be found [here](http://bit.ly/1hrJi4O).
 
 ## Vagrant
 
