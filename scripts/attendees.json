@@ -1,5 +1,5 @@
-{"name": {"first":"Brian", "last":"McNamara"}, "likes": ["meetups", "basketball", "movies", "stupid quotes"], "last_attended": Date(1368640800)},
-{"name": {"first":"Dave", "last":"Konopka"}, "likes": ["rain", "devops", "you", "meetups"], "last_attended": Date(1384538400000)},
-{"name": {"first":"Ben", "last":"Krein"},"likes": ["boats", "topgear", "hiking", "meetups"], "last_attended": Date(1384538400000)},
-{"name": {"first":"Chris", "last":"Heerschap"}, "likes": ["bikes", "eating", "meetups"], "dislikes": ["waiting for food"], "last_attended": Date(1381860000)},
-{"name": {"first":"Peter", "last":"Shannon"}, "likes": ["rock climbing", "not sleeping", "python", "go", "meetups"], "last_attended": Date(1384538400000)}
+{"name": "Brian McNamara", "likes": ["meetups", "basketball", "movies", "stupid quotes"], "last_attended": Date(1368640800000)},
+{"name": "Dave Konopka", "likes": ["rain", "devops", "you", "meetups"], "last_attended": Date(1384538400000)},
+{"name": "Ben Krein","likes": ["boats", "topgear", "hiking", "meetups"], "last_attended": Date(1384538400000)},
+{"name": "Chris Heerschap", "likes": ["bikes", "eating", "meetups"], "dislikes": ["waiting for food"], "last_attended": Date(1381860000000)},
+{"name": "Peter Shannon", "likes": ["rock climbing", "not sleeping", "python", "go", "meetups"], "last_attended": Date(1384538400000)}
