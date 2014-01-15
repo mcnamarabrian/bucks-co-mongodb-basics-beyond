@@ -29,7 +29,6 @@ vagrant up r1 && vagrant up r2 && vagrant up r3
 ```
 2. Configure the replicaset from r1:
 ```
-vagrant ssh r1
 /home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js
 ```
 3. Connect to any of the Vagrant VMs:
