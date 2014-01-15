@@ -27,7 +27,9 @@ vagrant up r1 && vagrant up r2 && vagrant up r3
 
 ```
 
-/home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js)
+vagrant ssh r1
+
+/home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js
 
 ```
 
@@ -43,7 +45,7 @@ vagrant ssh r1
 
 ```
 
-/home/vagrant/mongodb/bin/mongo)
+/home/vagrant/mongodb/bin/mongo
 
 ```
 
@@ -51,6 +53,14 @@ vagrant ssh r1
 
 ```
 
-rs.status())
+rs.status()
+
+```
+
+6.  Verify the configuration of the replicaset includes tags:
+
+```
+
+rs.config()
 
 ```
