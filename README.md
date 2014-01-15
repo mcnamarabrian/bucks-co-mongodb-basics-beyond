@@ -32,7 +32,6 @@ vagrant ssh r1
 /home/vagrant/mongodb/bin/mongo < /home/vagrant/add_members.js
 
 ```
-
 3. Connect to any of the Vagrant VMs:
 
 ```
@@ -40,7 +39,6 @@ vagrant ssh r1
 vagrant ssh r1
 
 ```
-
 4. Open the mongo Javascript Mongo shell:
 
 ```
@@ -48,7 +46,6 @@ vagrant ssh r1
 /home/vagrant/mongodb/bin/mongo
 
 ```
-
 5. Verify the status of the replicaset:
 
 ```
@@ -56,7 +53,6 @@ vagrant ssh r1
 rs.status()
 
 ```
-
 6.  Verify the configuration of the replicaset includes tags:
 
 ```
